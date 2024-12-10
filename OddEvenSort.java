@@ -1,6 +1,6 @@
-public class OddEvenSort {
+public class OddEvenSort<T extends Comparable<T>> {
 
-    public static void oddEvenSort(int[] array){
+    public  void oddEvenSort(T[] array){
         int n = array.length;
         boolean sorted = false;
 
@@ -8,14 +8,14 @@ public class OddEvenSort {
             sorted = true;
 
             for(int i = 1; i < n - 1; i += 2){
-                if(array[i] > array[i + 1]){
+                if(array[i].compareTo(array[i + 1]) > 0){
                     swap(array, i, i + 1);
                     sorted = false;
                 }
             }
 
-            for(int j = 0; j < array.length; j += 2){
-                if(array[j] > array[j +1 ]){
+            for(int j = 0; j < n - 1; j += 2){
+               if (array[j].compareTo(array[j + 1]) > 0){
                     swap(array, j, j + 1);
                     sorted = false;
                 }
@@ -23,8 +23,8 @@ public class OddEvenSort {
         }
     }
 
-    private static void swap(int[] array, int i, int j){
-        int temp = array[i];
+    private  void swap(T[] array, int i, int j){
+        T temp = array[i];
         array[i] = array[j];
         array[j] = temp;
     } 
