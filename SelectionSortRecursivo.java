@@ -1,21 +1,18 @@
 public class SelectionSortRecursivo<T extends Comparable<T>> {
+    public void sort(T[] array, int leftIndex, int rightIndex) {
+		if(rightIndex <= leftIndex){
+			return;
+		}
 
-    public void sort(T[] array, int inicio) {
-        if (inicio < array.length - 1) {
-            int minIndex = encontraMenorIndex(array, inicio, array.length - 1);
-            swap(array, inicio, minIndex);
-            sort(array, inicio + 1);
-        }
-    }
-
-    private int encontraMenorIndex(T[] array, int iniIndex, int finIndex) {
-        int minIndex = iniIndex;
-        for (int i = iniIndex + 1; i <= finIndex; i++) {
-            if (array[i].compareTo(array[minIndex]) < 0) {
-                minIndex = i;
-            }
-        }
-        return minIndex;
+		int minIndex = leftIndex;
+		if(rightIndex >= leftIndex - 1){
+			if(array[leftIndex].compareTo(array[leftIndex+1]) > 0){
+				minIndex = leftIndex + 1;
+			}
+			swap(array, minIndex, leftIndex);
+			sort(array, leftIndex + 1, rightIndex);
+		}
+		sort(array, leftIndex, rightIndex - 1);
     }
 
     private void swap(T[] array, int i, int j) {

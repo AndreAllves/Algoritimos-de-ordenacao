@@ -1,12 +1,10 @@
 public class SelectionSort<T extends Comparable<T>> {
     
-    private void selectionSort(T[] array){
-        int n = array.length;
-        for(int i = 0; i < n - 1; i++){
+    public void sort(T[] array, int leftIndex, int rightIndex) {
+        for (int i = leftIndex; i <= rightIndex - 1; i++) {
             int minIndex = i;
-
-            for(int j = i + i; j < n; j++){
-                if(array[j].compareTo(array[minIndex]) < 0){
+            for (int j = i + 1; j <= rightIndex; j++) {
+                if ((array[j]).compareTo(array[minIndex]) < 0) {
                     minIndex = j;
                 }
             }
